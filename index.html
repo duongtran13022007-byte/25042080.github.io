@@ -10,14 +10,15 @@
 <style>
   :root{
     --washi:#F7F1E4;
-    --washi-deep:#EFE6D2;
-    --sumi:#2A2826;
-    --sumi-soft:#56504A;
-    --indigo:#2C4356;
-    --indigo-deep:#1F313F;
-    --vermillion:#B5453A;
-    --gold:#C39A4B;
-    --line:rgba(42,40,38,0.12);
+    --washi-deep:#F1E7D6;
+    --sumi:#272320;
+    --sumi-soft:#5A5249;
+    --indigo:#1F5C77;
+    --indigo-deep:#143A4D;
+    --vermillion:#D8453A;
+    --gold:#C9A227;
+    --sakura:#F6D9DC;
+    --line:rgba(39,35,32,0.12);
     --max:1100px;
   }
 
@@ -227,7 +228,7 @@
   }
   .info-item .ic{
     font-size:1.4rem; width:42px; height:42px; flex-shrink:0;
-    border-radius:10px; background:var(--washi-deep);
+    border-radius:10px; background:var(--sakura);
     display:flex; align-items:center; justify-content:center;
   }
   .info-item .lab{font-size:0.8rem; color:var(--sumi-soft); text-transform:uppercase; letter-spacing:.06em;}
@@ -243,7 +244,9 @@
   .interest-grid{display:flex; flex-wrap:wrap; gap:10px;}
   .interest-grid span{
     background:var(--washi-deep); border-radius:999px; padding:8px 16px; font-size:0.88rem;
+    transition:background .2s, color .2s;
   }
+  .interest-grid span:hover{background:var(--sakura); color:var(--vermillion);}
   .goal p{color:var(--sumi-soft); font-size:0.95rem;}
   .goal b{color:var(--indigo-deep);}
 
@@ -419,7 +422,7 @@
     display:grid; grid-template-columns:repeat(4,1fr); gap:14px; margin-bottom:54px;
   }
   .feel{
-    background:var(--washi-deep); border-radius:12px; padding:22px; text-align:center;
+    background:var(--sakura); border-radius:12px; padding:22px; text-align:center;
   }
   .feel .ic{font-size:1.6rem; margin-bottom:10px;}
   .feel p{margin:0; font-size:0.85rem; color:var(--sumi-soft);}
@@ -484,7 +487,7 @@
 <div id="home" class="hero">
   <div class="bg-kanji">語</div>
   <span class="eyebrow">日本語学 · Nhập môn Công nghệ số &amp; Ứng dụng Trí tuệ nhân tạo AI</span>
-  <h1><span class="jp">トラン ドゥック ヅオン</span>Trần Đức Dương</h1>
+  <h1><span class="jp">チャン ドゥック ヅオン</span>Trần Đức Dương</h1>
   <p class="sub">
     Portfolio cá nhân · Sinh viên ngành Ngôn ngữ &amp; Văn hóa Nhật Bản,
     Trường Đại học Ngoại ngữ – ĐHQGHN. Nơi lưu lại hành trình rèn luyện
@@ -696,8 +699,9 @@
         </p>
         <div class="upload-box">
           <label class="upload-btn" for="file1">📂 Chọn file (Word, PDF, PowerPoint, Excel, ảnh...)</label>
-          <input type="file" id="file1" accept=".docx,.doc,.pdf,.pptx,.ppt,.xlsx,.xls,.png,.jpg,.jpeg,.gif,.webp,.txt,.csv" onchange="previewFile(event, 'preview1', 'filename1')">
+          <input type="file" id="file1" accept=".docx,.doc,.pdf,.pptx,.ppt,.xlsx,.xls,.png,.jpg,.jpeg,.gif,.webp,.txt,.csv" onchange="previewFile(event, 'preview1', 'filename1', 'file1')">
           <span class="file-name" id="filename1">Chưa có file nào được chọn</span>
+          <button type="button" class="download-btn" id="file1-remove" style="display:none;" onclick="removeFile('file1','preview1','filename1')">🗑️ Xóa file</button>
         </div>
         <div class="docx-preview" id="preview1"></div>
       </div>
@@ -724,8 +728,9 @@
         </p>
         <div class="upload-box">
           <label class="upload-btn" for="file2">📂 Chọn file (Word, PDF, PowerPoint, Excel, ảnh...)</label>
-          <input type="file" id="file2" accept=".docx,.doc,.pdf,.pptx,.ppt,.xlsx,.xls,.png,.jpg,.jpeg,.gif,.webp,.txt,.csv" onchange="previewFile(event, 'preview2', 'filename2')">
+          <input type="file" id="file2" accept=".docx,.doc,.pdf,.pptx,.ppt,.xlsx,.xls,.png,.jpg,.jpeg,.gif,.webp,.txt,.csv" onchange="previewFile(event, 'preview2', 'filename2', 'file2')">
           <span class="file-name" id="filename2">Chưa có file nào được chọn</span>
+          <button type="button" class="download-btn" id="file2-remove" style="display:none;" onclick="removeFile('file2','preview2','filename2')">🗑️ Xóa file</button>
         </div>
         <div class="docx-preview" id="preview2"></div>
       </div>
@@ -752,8 +757,9 @@
         </p>
         <div class="upload-box">
           <label class="upload-btn" for="file3">📂 Chọn file (Word, PDF, PowerPoint, Excel, ảnh...)</label>
-          <input type="file" id="file3" accept=".docx,.doc,.pdf,.pptx,.ppt,.xlsx,.xls,.png,.jpg,.jpeg,.gif,.webp,.txt,.csv" onchange="previewFile(event, 'preview3', 'filename3')">
+          <input type="file" id="file3" accept=".docx,.doc,.pdf,.pptx,.ppt,.xlsx,.xls,.png,.jpg,.jpeg,.gif,.webp,.txt,.csv" onchange="previewFile(event, 'preview3', 'filename3', 'file3')">
           <span class="file-name" id="filename3">Chưa có file nào được chọn</span>
+          <button type="button" class="download-btn" id="file3-remove" style="display:none;" onclick="removeFile('file3','preview3','filename3')">🗑️ Xóa file</button>
         </div>
         <div class="docx-preview" id="preview3"></div>
       </div>
@@ -779,8 +785,9 @@
         </p>
         <div class="upload-box">
           <label class="upload-btn" for="file4">📂 Chọn file (Word, PDF, PowerPoint, Excel, ảnh...)</label>
-          <input type="file" id="file4" accept=".docx,.doc,.pdf,.pptx,.ppt,.xlsx,.xls,.png,.jpg,.jpeg,.gif,.webp,.txt,.csv" onchange="previewFile(event, 'preview4', 'filename4')">
+          <input type="file" id="file4" accept=".docx,.doc,.pdf,.pptx,.ppt,.xlsx,.xls,.png,.jpg,.jpeg,.gif,.webp,.txt,.csv" onchange="previewFile(event, 'preview4', 'filename4', 'file4')">
           <span class="file-name" id="filename4">Chưa có file nào được chọn</span>
+          <button type="button" class="download-btn" id="file4-remove" style="display:none;" onclick="removeFile('file4','preview4','filename4')">🗑️ Xóa file</button>
         </div>
         <div class="docx-preview" id="preview4"></div>
       </div>
@@ -807,8 +814,9 @@
         </p>
         <div class="upload-box">
           <label class="upload-btn" for="file5">📂 Chọn file (Word, PDF, PowerPoint, Excel, ảnh...)</label>
-          <input type="file" id="file5" accept=".docx,.doc,.pdf,.pptx,.ppt,.xlsx,.xls,.png,.jpg,.jpeg,.gif,.webp,.txt,.csv" onchange="previewFile(event, 'preview5', 'filename5')">
+          <input type="file" id="file5" accept=".docx,.doc,.pdf,.pptx,.ppt,.xlsx,.xls,.png,.jpg,.jpeg,.gif,.webp,.txt,.csv" onchange="previewFile(event, 'preview5', 'filename5', 'file5')">
           <span class="file-name" id="filename5">Chưa có file nào được chọn</span>
+          <button type="button" class="download-btn" id="file5-remove" style="display:none;" onclick="removeFile('file5','preview5','filename5')">🗑️ Xóa file</button>
         </div>
         <div class="docx-preview" id="preview5"></div>
       </div>
@@ -835,8 +843,9 @@
         </p>
         <div class="upload-box">
           <label class="upload-btn" for="file6">📂 Chọn file (Word, PDF, PowerPoint, Excel, ảnh...)</label>
-          <input type="file" id="file6" accept=".docx,.doc,.pdf,.pptx,.ppt,.xlsx,.xls,.png,.jpg,.jpeg,.gif,.webp,.txt,.csv" onchange="previewFile(event, 'preview6', 'filename6')">
+          <input type="file" id="file6" accept=".docx,.doc,.pdf,.pptx,.ppt,.xlsx,.xls,.png,.jpg,.jpeg,.gif,.webp,.txt,.csv" onchange="previewFile(event, 'preview6', 'filename6', 'file6')">
           <span class="file-name" id="filename6">Chưa có file nào được chọn</span>
+          <button type="button" class="download-btn" id="file6-remove" style="display:none;" onclick="removeFile('file6','preview6','filename6')">🗑️ Xóa file</button>
         </div>
         <div class="docx-preview" id="preview6"></div>
       </div>
@@ -950,12 +959,57 @@
     previewEl.classList.add('show');
   }
 
-  function previewFile(event, previewId, filenameId) {
-    const file = event.target.files[0];
+  // ====== Lưu trữ file lâu dài bằng IndexedDB (trên trình duyệt của bạn) ======
+  const DB_NAME = 'PortfolioFilesDB';
+  const STORE_NAME = 'uploads';
+
+  function openFilesDB() {
+    return new Promise((resolve, reject) => {
+      const req = indexedDB.open(DB_NAME, 1);
+      req.onupgradeneeded = () => {
+        if (!req.result.objectStoreNames.contains(STORE_NAME)) {
+          req.result.createObjectStore(STORE_NAME);
+        }
+      };
+      req.onsuccess = () => resolve(req.result);
+      req.onerror = () => reject(req.error);
+    });
+  }
+
+  async function saveFileToDB(key, file) {
+    const db = await openFilesDB();
+    return new Promise((resolve, reject) => {
+      const tx = db.transaction(STORE_NAME, 'readwrite');
+      tx.objectStore(STORE_NAME).put(file, key);
+      tx.oncomplete = () => resolve();
+      tx.onerror = () => reject(tx.error);
+    });
+  }
+
+  async function getFileFromDB(key) {
+    const db = await openFilesDB();
+    return new Promise((resolve, reject) => {
+      const tx = db.transaction(STORE_NAME, 'readonly');
+      const req = tx.objectStore(STORE_NAME).get(key);
+      req.onsuccess = () => resolve(req.result || null);
+      req.onerror = () => reject(req.error);
+    });
+  }
+
+  async function deleteFileFromDB(key) {
+    const db = await openFilesDB();
+    return new Promise((resolve, reject) => {
+      const tx = db.transaction(STORE_NAME, 'readwrite');
+      tx.objectStore(STORE_NAME).delete(key);
+      tx.oncomplete = () => resolve();
+      tx.onerror = () => reject(tx.error);
+    });
+  }
+
+  // ====== Hiển thị nội dung file (Word, PDF, PowerPoint, Excel, ảnh, văn bản...) ======
+  function renderPreview(file, previewId, filenameId) {
     const previewEl = document.getElementById(previewId);
     const filenameEl = document.getElementById(filenameId);
-    if (!file) return;
-
     const name = file.name.toLowerCase();
     filenameEl.textContent = '⏳ Đang tải: ' + file.name;
 
@@ -1044,6 +1098,48 @@
     showFileCard(previewEl, file, '📦', 'Chưa hỗ trợ xem trước — bạn vẫn có thể mở file');
     filenameEl.textContent = '✅ ' + file.name;
   }
+
+  // Khi người dùng chọn file: hiển thị xem trước + lưu lại để mở trang vẫn còn
+  function previewFile(event, previewId, filenameId, key) {
+    const file = event.target.files[0];
+    if (!file) return;
+    renderPreview(file, previewId, filenameId);
+    saveFileToDB(key, file)
+      .then(() => toggleRemoveBtn(key, true))
+      .catch(err => console.error('Không thể lưu file:', err));
+  }
+
+  // Xóa file đã lưu
+  function removeFile(key, previewId, filenameId) {
+    deleteFileFromDB(key).then(() => {
+      const previewEl = document.getElementById(previewId);
+      const filenameEl = document.getElementById(filenameId);
+      const inputEl = document.getElementById(key);
+      previewEl.innerHTML = '';
+      previewEl.classList.remove('show');
+      filenameEl.textContent = 'Chưa có file nào được chọn';
+      if (inputEl) inputEl.value = '';
+      toggleRemoveBtn(key, false);
+    });
+  }
+
+  function toggleRemoveBtn(key, show) {
+    const btn = document.getElementById(key + '-remove');
+    if (btn) btn.style.display = show ? 'inline-flex' : 'none';
+  }
+
+  // Khi mở lại trang: khôi phục các file đã lưu từ trước
+  window.addEventListener('DOMContentLoaded', () => {
+    for (let i = 1; i <= 6; i++) {
+      const key = 'file' + i;
+      getFileFromDB(key).then(file => {
+        if (file) {
+          renderPreview(file, 'preview' + i, 'filename' + i);
+          toggleRemoveBtn(key, true);
+        }
+      }).catch(err => console.error('Không thể khôi phục file:', err));
+    }
+  });
 
   // Mở sẵn dự án đầu tiên
   document.querySelector('.proj')?.classList.add('open');
